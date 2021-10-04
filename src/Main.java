@@ -9,6 +9,25 @@ import java.util.Scanner;
  */
 public class Main {
 	public static void main(String[] args) {
-
+		Scanner input = new Scanner(System.in);
+		System.out.print("Inserisci l'importo ");
+		double n = input.nextDouble();
+		double tassa = 0;
+		final double tassa10 = 10000 / 100 * 10;
+		final double tassa20 = tassa10 + (10000 / 100 * 7);
+		final double tassa30 = tassa20 + (10000 / 100 * 5);
+		if(n <= 10000) {
+			tassa = n / 100 * 10;
+		} else if(n > 10000 && n <= 20000) {
+			n -= 10000;
+			tassa += tassa10 + (n / 100 * 7);
+		} else if(n > 20000 && n <= 30000) {
+			n -= 20000;
+			tassa += tassa20 + (n / 100 * 5);
+		} else {
+			n -= 30000;
+			tassa += tassa30 + (n / 100 * 3);
+		}
+		System.out.println("La tassa sull'importo è: " + tassa);
 	}
 }
